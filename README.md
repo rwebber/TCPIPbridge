@@ -18,4 +18,4 @@ The next step is to create a virtual env for this project to simplify setup.
 A Isadora sample project will be provided with TCP-IP communications demostrated.
 
 ###A video demo of the Launch and Close features (utilizing Spout for video sharing)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-QVQ25PuYR4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[YouTube demo video](https://youtu.be/-QVQ25PuYR4 "TCPIPbridge demo")
