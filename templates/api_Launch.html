@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ appName }} AppHandle: {{ handle }}</h1>
+    <a href="/api/Close/?pid={{ handle }}" >Close Window</a>
+    {#{% debug %}#}
+{% endblock %}

@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html ng-app lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script data-require="angular.js@*" data-semver="2.0.0-alpha.45" src="https://code.angularjs.org/2.0.0-alpha.45/angular2.js"></script>
+    <script data-require="angular-route@*" data-semver="1.4.6" src="https://code.angularjs.org/1.4.6/angular-route.js"></script>
+    <script data-require="angular-animate@*" data-semver="1.4.3" src="https://code.angularjs.org/1.4.3/angular-animate.js"></script>
+
+    <title>TCPIP bridge</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <!-- custom css -->
+    <link rel="stylesheet" href="/static/css_custom/style.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+    <body class="wrapper">
+
+        <div class="row">
+        {% include "nav.html" %}
+        </div>
+
+        <div class="container">
+
+            {% block content %}
+            {% endblock %}
+
+             <div class="row">
+                 <div class="col-xs-12">
+                     <h2>api overview</h2>
+                     <p><a href="http://127.0.0.1:8000/">INDEX PAGE</a> : http://127.0.0.1:8000/api/ also redirects to index.</p>
+                     <p>FORMAT: <a href="http://127.0.0.1:8000/api/sss_minute">http://127.0.0.1:8000/api/sss_minute</a> is the basic API url path, where "sss_minute" is the action.</p>
+                     <h3>commands</h3>
+
+                     <p>http://127.0.0.1:8000/api/launch</p>
+                     <p>A menu that gets system info, like total screen width/height etc.. would be good.</p>
+                 </div>
+            </div>
+
+        <!-- close ROW .container -->
+        </div>
+
+        <hr>
+
+        {% include "footer.html" %}
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="/static/js/jquery-1.11.2.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+    </body>
+</html>

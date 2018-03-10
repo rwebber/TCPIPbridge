@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-xs-9">
+        <h1>API Commands</h1>
+        <div>
+            NOTE : http://SERVERPATH:PORT/api/ also redirects to index.
+        </div>
+    </div>
+
+    <div class="col-xs-3">
+        <img class="pull-right" src="/static/img/TCPIPbridgeLogoLRG.png" scr="">
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
+        <!-- NEW ACCORDION PANRL -->
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <span class="glyphicon glyphicon-expand" aria-hidden="true">&nbsp;</span>Launch : run executable located on system
+                </a>
+              </h4>
+            </div>
+
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-9">
+                        <p class="text-left"></p>
+                        <!-- api Description List -->
+                        <dl>
+                            <dt>
+                                <span class="highlighted">Launch:</span> <span class="descname">[root]</span>
+                            </dt>
+                            <dd>
+                                <p>
+                                  This command will run an executable on your system.<br>
+                                    A number of arguments are excepted that provide optional behaviours.<br>
+                                    The <strong>root URL</strong> for this command is: http://127.0.0.1:8000/api/Launch/<br>
+                                    Assuming the default port of 8000 is set in the TCPbridge config file.<br>
+                                  <strong>UseCase:</strong> originally developed to launch <a href="http://spout.zeal.co">SPOUT</a> sources for use in Isadora.<br>
+                                </p>
+                                <div class="well">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true">&nbsp;</span>
+                                    <strong>Related Isadora Actors:</strong> "TCPIPbridge Launch" is available from
+                                        <a href="http://www.dusxproductions.com">DusXproductions</a>,
+                                        and provides an easy to use interface to this command set.
+                                </div>
+                                <div class="versionchanged">
+                                  <p><span class="versionmodified">Initial release, v0.1, </span> windows only</p>
+                                </div>
+                            </dd>
+
+                            <dt>
+                                <span class="highlighted">PEXE:</span> .../<span class="descname">?pexe=XXX [required]</span>
+                            </dt>
+                            <dd>
+                                <p>XXX = full file path to executable (must be URL encoded)<br>
+                                default value is: 'C%3A%5CWindows%5CSystem32%5Cnotepad.exe'<br>
+                                TCPbridge Launch 'user actor' accepts path in form 'C:\Windows\System32\notepad.exe' (encoding is done internally via Javascript)
+                                </p>
+                            </dd>
+
+                            <dt>
+                                <span class="highlighted">RETURNS:</span> integer <span class="descname">PID (process ID)</span>
+                            </dt>
+                            <dd>
+                                <p>The windows are transversed for the latest arrival, and the PID of this window is returned.<br>
+                                The PID can later be used to control this window/process. See: api/Close</p>
+                            </dd>
+                        </dl>
+
+                            <p class="text-left">
+                                <strong>Sample URL:</strong> http://127.0.0.1:8000/api/Launch/?pexe=C%3A%5CWindows%5CSystem32%5Cnotepad.exe&pfile=readme.txt
+                            </p>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <span class="pull-right">
+                            <p>
+                                Launch notepad.exe with defaults.
+                            </p>
+                            <a href="/api/Launch/?pexe=C%3A%5CWindows%5CSystem32%5Cnotepad.exe&pfile=" target="" class="btn btn-block btn-sample text-muted small"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> Sample</a>
+                        </span>
+                    </div>
+
+                <!-- end row -->
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+        <!-- NEW ACCORDION PANEL -->
+        <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <span class="glyphicon glyphicon-expand" aria-hidden="true">&nbsp;</span>Close : close window of provided PID
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-9">
+                        <p class="text-left"></p>
+                        <!-- api Description List -->
+                        <dl>
+                            <dt>
+                                <span class="highlighted">CLOSE:</span> <span class="descname">[root]</span>
+                            </dt>
+                            <dd>
+                                <p>
+                                  Closes process associated with PID.<br>
+                                    The <strong>root URL</strong> for this command is: http://127.0.0.1:8000/api/Close/<br>
+                                    Assuming the default port of 8000 is set in the TCPbridge config file.<br>
+                                  <strong>UseCase:</strong> close window (process) after using 'Launch' top open it.<br>
+                                </p>
+                                <div class="well">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true">&nbsp;</span>
+                                    <strong>Related Isadora Actors:</strong> "TCPIPbridge Close" is available from
+                                        <a href="http://www.dusxproductions.com">DusXproductions</a>,
+                                        and provides an easy to use interface to this command set.
+                                </div>
+                                <div class="versionchanged">
+                                  <p><span class="versionmodified">Initial release, v0.1, </span> Windows Only</p>
+                                </div>
+                            </dd>
+
+                            <dt>
+                                <span class="highlighted">PID:</span> .../<span class="descname">?pid=XXX [required]</span>
+                            </dt>
+                            <dd>
+                                <p>XXX = integer PID of process
+                                </p>
+                            </dd>
+                            
+                            
+
+                            <dt>
+                                <span class="highlighted">RETURNS:</span> string <span class="descname">val ('0' = no error)</span>
+                            </dt>
+                            <dd>
+                                <p>Returns Integer. Value 0 = no error.</p>
+                            </dd>
+                        </dl>
+                        
+                    </div>
+
+                    <div class="col-xs-3">
+                        <span class="pull-right">
+                            <p>
+                                Attempt to close process with PID = 100.
+                            </p>
+                            <a href="/api/Close/?pid=100" target="" class="btn btn-block btn-sample text-muted small"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> Sample</a>
+                        </span>
+                    </div>
+
+                <!-- end row -->
+                </div>
+              </div>
+          <div class="list-group">
+              <div class="panel-body">
+              	<p class="text-left">
+                	<strong>Sample URL: [url encoded]</strong> 
+                    http://127.0.0.1:8000/api/Close/?pid=946
+                </p>
+              </div>
+          </div>
+          <div class="panel-body">
+            NOTE: the Close function is generally used in conjuntion with another API call that first returns a PID for use with this function.
+          </div>
+        </div>
+        </div>
+        
+
+
+        <!-- NEW ACCORDION PANRL -->
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <span class="glyphicon glyphicon-expand" aria-hidden="true">&nbsp;</span>DisplayCIF : display - capture image as file
+                </a>
+              </h4>
+            </div>
+
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-9">
+                        <p class="text-left"></p>
+                        <!-- api Description List -->
+                        <dl>
+                            <dt>
+                                <span class="highlighted">DisplayCIF:</span> <span class="descname">[root]</span>
+                            </dt>
+                            <dd>
+                                <p>
+                                  This command captures a PNG file of any system display.<br>
+                                    The <strong>root URL</strong> for this command is: http://127.0.0.1:8000/api/DisplayCIF/<br>
+                                    Assuming the default port of 8000 is set in the TCPbridge config file.<br>
+                                  <strong>UseCase:</strong> save over an already linked Isadora media image to allow loading into active show.<br>
+                                </p>
+                                <div class="well">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true">&nbsp;</span>
+                                    <strong>Related Isadora Actors:</strong> "TCPIPbridge DisplayCIF" is available from
+                                        <a href="http://www.dusxproductions.com">DusXproductions</a>,
+                                        and provides an easy to use interface to this command set.
+                                </div>
+                                <div class="versionchanged">
+                                  <p><span class="versionmodified">Initial release, v0.1, </span> Cross platform only</p>
+                                </div>
+                            </dd>
+
+                            <dt>
+                                <span class="highlighted">PFILE:</span> .../<span class="descname">?pfile=XXX [dynamic default, saved to TCPIPbridge root]</span>
+                            </dt>
+                            <dd>
+                                <p>XXX = either the filename of the PNG to save or a complete file path ending in the filename (must be URL encoded)<br>
+                                Note: the file name can include '%d' which will be replaced by the monitor number (as assigned in Display Settings)<br>
+                                TCPbridge DisplayCIF 'user actor' accepts path in form 'C:\path\filename.png' (encoding is done internally via Javascript)
+                                </p>
+                            </dd>
+                            
+                            
+                            <dt>
+                                <span class="highlighted">VIEW:</span> .../<span class="descname">?view=XXX [JSON or HTML, default = JSON]</span>
+                            </dt>
+                            <dd>
+                                <p>XXX = either JSON or HTML<br>
+								HTML is primarily used for TCPIP bridge app.<br>
+                                TCPbridge DisplayCIF 'user actor' requires JSON.
+                                </p>
+                            </dd>
+
+
+                            <dt>
+                                <span class="highlighted">RETURNS:</span> string <span class="descname">val (0 = no error)</span>
+                            </dt>
+                            <dd>
+                                <p>After attempting to capture the display image (screen capture) the return value is set (string message is returned in HTML view).</p>
+                            </dd>
+                        </dl>
+
+                            <p class="text-left">
+                                <strong>Sample URL: [url encoded]</strong> http://127.0.0.1:8000/api/DisplayCIF/?view=JSON&pfile=C%3A%2FUsers%2FUserName%2FDesktop%2FtestScreenCapture.png
+                            </p>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <span class="pull-right">
+                            <p>
+                                Capture second display and save as: testScreenCapture.png.
+                            </p>
+                            <a href="/api/DisplayCIF/?pfile=C%3A%2FUsers%2FDusX%2FDesktop%2FtestScreenCapture.png" target="" class="btn btn-block btn-sample text-muted small"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> Sample</a>
+                        </span>
+                    </div>
+
+                <!-- end row -->
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+    <!-- Panel 'ACCORDION' GROUP -->
+    </div>
+</div>
+
+
+{% endblock %}
