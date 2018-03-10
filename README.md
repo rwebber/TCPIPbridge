@@ -4,7 +4,7 @@ QT and Django app exposing REST api
 TCPIPbridge offers a tcp-ip interface to help extend the functionality of [Isadora](https://troikatronix.com "The creativity server").
 The supported functions are offered via http GET.
 
-Current features:
+##Current features:
 1.  Launch (open application)
 2.  Close (close Launched application)
 3.  DisplayCIF (capture any system display as a file)
@@ -16,3 +16,6 @@ Currently this project has a complex enviroment to build.
 The next step is to create a virtual env for this project to simplify setup.
 
 A Isadora sample project will be provided with TCP-IP communications demostrated.
+
+###A video demo of the Launch and Close features (utilizing Spout for video sharing)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-QVQ25PuYR4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
